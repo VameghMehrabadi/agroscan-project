@@ -1,0 +1,36 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# VS Code settings
+.vscode/
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# PyTorch model files (اگر مدل‌تون خیلی بزرگ هست جدا نگه دارید)
+*.pt
+*.pth
+
+# Temporary files
+*.tmp
+*.bak
+
+# macOS
+.DS_Store
