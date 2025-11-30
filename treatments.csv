@@ -1,0 +1,91 @@
+﻿label,continent,treatment
+Pepper__bell___Bacterial_spot,Asia,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___Bacterial_spot,Africa,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___Bacterial_spot,Europe,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___Bacterial_spot,North America,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___Bacterial_spot,South America,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___Bacterial_spot,Australia,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Pepper__bell___healthy,Asia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Pepper__bell___healthy,Africa,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Pepper__bell___healthy,Europe,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Pepper__bell___healthy,North America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Pepper__bell___healthy,South America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Pepper__bell___healthy,Australia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___Early_blight,Asia,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___Early_blight,Africa,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___Early_blight,Europe,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___Early_blight,North America,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___Early_blight,South America,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___Early_blight,Australia,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Potato___healthy,Asia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___healthy,Africa,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___healthy,Europe,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___healthy,North America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___healthy,South America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___healthy,Australia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Potato___Late_blight,Asia,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Potato___Late_blight,Africa,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Potato___Late_blight,Europe,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Potato___Late_blight,North America,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Potato___Late_blight,South America,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Potato___Late_blight,Australia,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato__Target_Spot,Asia,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Target_Spot,Africa,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Target_Spot,Europe,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Target_Spot,North America,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Target_Spot,South America,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Target_Spot,Australia,کاهش رطوبت محیط و استفاده از قارچ‌کش
+Tomato__Tomato_mosaic_virus,Asia,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_mosaic_virus,Africa,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_mosaic_virus,Europe,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_mosaic_virus,North America,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_mosaic_virus,South America,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_mosaic_virus,Australia,کنترل شته‌ها و حذف گیاهان آلوده
+Tomato__Tomato_YellowLeaf__Curl_Virus,Asia,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato__Tomato_YellowLeaf__Curl_Virus,Africa,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato__Tomato_YellowLeaf__Curl_Virus,Europe,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato__Tomato_YellowLeaf__Curl_Virus,North America,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato__Tomato_YellowLeaf__Curl_Virus,South America,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato__Tomato_YellowLeaf__Curl_Virus,Australia,استفاده از توری ضدحشره و کنترل ناقلین ویروس
+Tomato_Bacterial_spot,Asia,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Bacterial_spot,Africa,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Bacterial_spot,Europe,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Bacterial_spot,North America,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Bacterial_spot,South America,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Bacterial_spot,Australia,استفاده از اسپری مسی و حذف برگ‌های آلوده
+Tomato_Early_blight,Asia,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_Early_blight,Africa,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_Early_blight,Europe,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_Early_blight,North America,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_Early_blight,South America,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_Early_blight,Australia,آبیاری قطره‌ای و اسپری قارچ‌کش مناسب
+Tomato_healthy,Asia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_healthy,Africa,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_healthy,Europe,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_healthy,North America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_healthy,South America,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_healthy,Australia,هیچ درمانی نیاز نیست، حفظ شرایط فعلی
+Tomato_Late_blight,Asia,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Late_blight,Africa,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Late_blight,Europe,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Late_blight,North America,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Late_blight,South America,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Late_blight,Australia,استفاده از قارچ‌کش مسی و حذف برگ آلوده
+Tomato_Leaf_Mold,Asia,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Leaf_Mold,Africa,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Leaf_Mold,Europe,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Leaf_Mold,North America,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Leaf_Mold,South America,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Leaf_Mold,Australia,بهبود تهویه گلخانه و کاهش رطوبت
+Tomato_Septoria_leaf_spot,Asia,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Septoria_leaf_spot,Africa,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Septoria_leaf_spot,Europe,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Septoria_leaf_spot,North America,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Septoria_leaf_spot,South America,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Septoria_leaf_spot,Australia,تناوب زراعی و استفاده از قارچ‌کش
+Tomato_Spider_mites_Two_spotted_spider_mite,Asia,استفاده از شکارگرهای طبیعی و کاهش دمای محیط
+Tomato_Spider_mites_Two_spotted_spider_mite,Africa,استفاده از شکارگرهای طبیعی و کاهش دمای محیط
+Tomato_Spider_mites_Two_spotted_spider_mite,Europe,استفاده از شکارگرهای طبیعی و کاهش دمای محیط
+Tomato_Spider_mites_Two_spotted_spider_mite,North America,استفاده از شکارگرهای طبیعی و کاهش دمای محیط
+Tomato_Spider_mites_Two_spotted_spider_mite,South America,استفاده از شکارگرهای طبیعی و کاهش دمای محیط
+Tomato_Spider_mites_Two_spotted_spider_mite,Australia,استفاده از شکارگرهای طبیعی و کاهش دمای محیط

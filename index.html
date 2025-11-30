@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AgroScan Pro</title>
+    
+    <!-- فونت وزیر -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        :root {
+            --primary: #059669;
+            --accent: #34d399;
+            --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1f2937;
+            --radius: 24px;
+            --shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- PRELOADER --- */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+
+        .loader-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            animation: pulse-grow 1.5s infinite alternate;
+        }
+
+        .loader-text {
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+            animation: fadeText 1.5s infinite alternate;
+        }
+
+        /* --- MAIN APP ANIMATIONS --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* --- LAYOUT --- */
+        .app-header {
+            padding: 40px 20px 60px;
+            text-align: center;
+            background: linear-gradient(to bottom, #059669, #10b981);
+            border-radius: 0 0 40px 40px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* حباب‌های پس‌زمینه هدر */
+        .bubble {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        .b1 { width: 100px; height: 100px; top: -20px; left: -20px; }
+        .b2 { width: 150px; height: 150px; bottom: -50px; right: -30px; }
+
+        .main-content {
+            max-width: 500px;
+            margin: -40px auto 0;
+            padding: 0 20px 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.5);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .form-label {
+            font-weight: bold;
+            color: #4b5563;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .custom-select, .radio-group label {
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            background: #f3f4f6;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .custom-select:focus {
+            background: white;
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.4s;
+            background: #fafafa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area:hover, .upload-area.has-file {
+            border-color: var(--primary);
+            background: #ecfdf5;
+            transform: translateY(-2px);
+        }
+
+        .upload-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .preview-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 15px;
+            display: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Button */
+        .btn-main {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-main:hover {
+            background: #047857;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(5, 150, 105, 0.4);
+        }
+
+        .btn-main:active {
+            transform: scale(0.98);
+        }
+
+        /* Result Section */
+        #result-section {
+            display: none;
+        }
+
+        .result-card {
+            border-top: 6px solid var(--primary);
+            animation: slideUpBounce 0.8s ease-out;
+        }
+
+        .treatment-box {
+            background: #fffbeb;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+            border-right: 4px solid #f59e0b;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes pulse-grow {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+        @keyframes fadeText { from { opacity: 0.5; } to { opacity: 1; } }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes slideUpBounce {
+            0% { opacity: 0; transform: translateY(50px); }
+            60% { transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Loader Spinner inside button */
+        .btn-loader {
+            width: 24px; height: 24px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            display: none;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-icon">
+            <i class="fas fa-seedling"></i>
+        </div>
+        <div class="loader-text">AGRO SCAN</div>
+        <div style="margin-top: 10px; font-size: 0.8rem; color: #9ca3af;">درحال آماده‌سازی هوش مصنوعی...</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="app-header fade-in-up">
+        <div class="bubble b1"></div>
+        <div class="bubble b2"></div>
+        <div style="position: relative;">
+            <i class="fas fa-leaf fa-3x" style="margin-bottom: 10px; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));"></i>
+            <h1>دکتر گیاه پلاس</h1>
+            <p style="opacity: 0.9;">تشخیص فوری بیماری‌های گیاهی</p>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="main-content">
+        
+        <div class="card fade-in-up delay-1">
+            
+            <div style="margin-bottom: 20px;">
+                <label class="form-label">1. منطقه جغرافیایی</label>
+                <select id="region" class="custom-select">
+                    <option value="Iran">🇮🇷 ایران (Iran)</option>
+                    <option value="Asia">🌏 آسیا (Asia)</option>
+                    <option value="Europe">🇪🇺 اروپا (Europe)</option>
+                    <option value="North America">🌎 آمریکای شمالی</option>
+                    <option value="Africa">🌍 آفریقا</option>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label class="form-label">2. زبان پاسخ</label>
+                <div style="display: flex; gap: 10px;">
+                    <label style="flex:1; background:#f3f4f6; padding:12px; border-radius:12px; text-align:center; cursor:pointer;">
+                        <input type="radio" name="lang" value="fa" checked style="accent-color: var(--primary);"> فارسی
+                    </label>
+                    <label style="flex:1; background:#f3f4f6; padding:12px; border-radius:12px; text-align:center; cursor:pointer;">
+                        <input type="radio" name="lang" value="en" style="accent-color: var(--primary);"> English
+                    </label>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label class="form-label">3. تصویر گیاه</label>
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" hidden accept="image/*" onchange="handleFile(this)">
+                    <div class="upload-content">
+                        <div class="upload-icon-wrapper">
+                            <i class="fas fa-camera" style="font-size: 1.5rem; color: var(--primary);"></i>
+                        </div>
+                        <p style="color: #6b7280; font-size: 0.9rem;">لمس برای انتخاب عکس</p>
+                    </div>
+                    <img id="preview" class="preview-img">
+                </div>
+            </div>
+
+            <button id="submitBtn" class="btn-main" onclick="submitData()">
+                <span class="btn-text">شروع پردازش هوشمند</span>
+                <div class="btn-loader"></div>
+            </button>
+
+        </div>
+
+        <!-- RESULT SECTION -->
+        <div id="result-section">
+            <div class="card result-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding-bottom:15px; margin-bottom:15px;">
+                    <div>
+                        <div style="font-size:0.8rem; color:#9ca3af;">نتیجه تشخیص</div>
+                        <div class="disease-title" id="res-disease" style="font-weight:bold; font-size:1.2rem; color:#dc2626;">...</div>
+                    </div>
+                    <div class="confidence-tag" id="res-conf" style="background:#dcfce7; color:#059669; padding:5px 12px; border-radius:20px; font-weight:bold;">...</div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <i class="fas fa-map-marker-alt" style="color:var(--primary);"></i>
+                    <span id="res-region" style="color:#4b5563;">...</span>
+                </div>
+
+                <div style="font-weight:bold; margin-bottom:8px; color:#d97706;">
+                    <i class="fas fa-prescription-bottle-alt"></i> راهکار درمانی:
+                </div>
+                <div class="treatment-box" id="res-treatment">
+                    <!-- Text -->
+                </div>
+
+                <button onclick="resetApp()" style="width:100%; margin-top:20px; padding:12px; background:white; border:1px solid #ddd; border-radius:12px; color:#666; font-weight:bold;">
+                    <i class="fas fa-redo"></i> تشخیص جدید
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const API_URL = 'http://localhost:8000/predict'; // اگر روی موبایلی، IP سیستم رو بزن
+
+        // --- PRELOADER LOGIC ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+            }, 2000); // 2 ثانیه صبر کن تا انیمیشن دیده بشه
+        });
+
+        // --- FILE HANDLING ---
+        function handleFile(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.getElementById('preview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    
+                    // مخفی کردن المان‌های قبلی
+                    document.querySelector('.upload-content').style.display = 'none';
+                    document.querySelector('.upload-area').classList.add('has-file');
+                    
+                    // اسکرول نرم
+                    img.scrollIntoView({behavior: "smooth", block: "center"});
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // --- SUBMIT LOGIC ---
+        async function submitData() {
+            const fileInput = document.getElementById('fileInput');
+            const region = document.getElementById('region').value;
+            const lang = document.querySelector('input[name="lang"]:checked').value;
+            const btn = document.getElementById('submitBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const loader = btn.querySelector('.btn-loader');
+
+            if (!fileInput.files[0]) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'تصویر کو؟',
+                    text: 'لطفاً تصویر گیاه بیمار را بارگذاری کنید.',
+                    confirmButtonColor: '#059669',
+                    confirmButtonText: 'باشه'
+                });
+                return;
+            }
+
+            // UI Loading State
+            btn.disabled = true;
+            btn.style.background = "#9ca3af";
+            btnText.style.display = 'none';
+            loader.style.display = 'block';
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('region', region);
+            formData.append('lang', lang);
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error();
+
+                const data = await response.json();
+
+                // Render Results
+                document.getElementById('res-disease').innerText = data.prediction;
+                document.getElementById('res-conf').innerText = data.confidence + "%";
+                document.getElementById('res-region').innerText = data.region;
+                document.getElementById('res-treatment').innerText = data.treatment;
+
+                const tBox = document.getElementById('res-treatment');
+                if(lang === 'en') {
+                    tBox.style.direction = 'ltr';
+                    tBox.style.textAlign = 'left';
+                } else {
+                    tBox.style.direction = 'rtl';
+                    tBox.style.textAlign = 'right';
+                }
+
+                // Show Result Card
+                const resSec = document.getElementById('result-section');
+                resSec.style.display = 'block';
+                
+                setTimeout(() => {
+                    resSec.scrollIntoView({behavior: "smooth", block: "start"});
+                }, 100);
+
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'خطا',
+                    text: 'ارتباط با سرور قطع است.',
+                    confirmButtonText: 'تلاش مجدد'
+                });
+            } finally {
+                btn.disabled = false;
+                btn.style.background = "var(--primary)";
+                btnText.style.display = 'block';
+                loader.style.display = 'none';
+            }
+        }
+
+        function resetApp() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            setTimeout(() => {
+                document.getElementById('result-section').style.display = 'none';
+                document.getElementById('fileInput').value = "";
+                document.getElementById('preview').style.display = 'none';
+                document.querySelector('.upload-content').style.display = 'block';
+                document.querySelector('.upload-area').classList.remove('has-file');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
